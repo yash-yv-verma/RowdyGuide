@@ -3,11 +3,19 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "edu.utsa.cs3443.rowdyguide"
     compileSdk = 33
 
     defaultConfig {
         applicationId = "edu.utsa.cs3443.rowdyguide"
+=======
+    namespace = "edu.utsa.cs3443.kingkongapp"
+    compileSdk = 33
+
+    defaultConfig {
+        applicationId = "edu.utsa.cs3443.kingkongapp"
+>>>>>>> bf35a8e9be8e85096693843e9adb1e749d545fa1
         minSdk = 26
         targetSdk = 33
         versionCode = 1
