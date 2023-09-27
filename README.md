@@ -1,2 +1,0 @@
-# RowdyGuide
-KingKong
