@@ -10,6 +10,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 import edu.utsa.cs3443.rowdyguidefinal.controller.EventController;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 import edu.utsa.cs3443.rowdyguidefinal.model.StaticEvent;
@@ -34,7 +36,9 @@ public class EventActivity extends AppCompatActivity {
             System.out.println("here");
             return true;
         });
-        Event theEvent = new Event("name", "date","time");
-        StaticEvent.event = theEvent;
+
+
+
+
     }
 }

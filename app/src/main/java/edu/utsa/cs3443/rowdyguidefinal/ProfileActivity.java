@@ -33,7 +33,6 @@ public class ProfileActivity extends AppCompatActivity {
         profileController = new ProfileController(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
             profileController.onNavigationItemSelected(item); //call here
-            System.out.println("here");
             return true;
         });
     }

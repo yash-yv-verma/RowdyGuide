@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
 import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
+import edu.utsa.cs3443.rowdyguidefinal.model.Calendar;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 
 public class CalendarController {
@@ -21,11 +27,36 @@ public class CalendarController {
         this.calendarActivity = activity;
     }
 
-    public String getCalendarEvent(Event e){
+    public ArrayList<Event> getEventsForDay(String date, Calendar cal){
+        ArrayList<Event> valuesList = getValuesForKey(cal.getDateToEvent(), date);
+
+        return valuesList;
+    }
+    private static ArrayList<Event> getValuesForKey(HashMap<String, Event> map, String key) {
+        ArrayList<Event> valuesList = new ArrayList<>();
+
+        // Iterate through the entries in the HashMap
+        for (HashMap.Entry<String, Event> entry : map.entrySet()) {
+            // Check if the entry key matches the target key
+
+            if (entry.getKey().equals(key)) {
+
+                // Add the value to the ArrayList
+                valuesList.add(entry.getValue());
+            }
+        }
+
+        return valuesList;
+    }
+    public String getCalendarEvent(ArrayList<Event> events){
         StringBuilder theText = new StringBuilder();
-        theText.append(e.getName());
-        theText.append(e.getDate());
-        theText.append(e.getTime());
+        if(!events.isEmpty()) {
+            for (Event e : events) {
+                theText.append(e.getName() + " ");
+                theText.append(e.getDate() + " ");
+                theText.append(e.getTime() + "\n");
+            }
+        }
 
         return theText.toString();
     }
@@ -48,7 +79,7 @@ public class CalendarController {
 
 
 
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.navigation_events){
             Intent intent = new Intent(calendarActivity.getApplicationContext(), EventActivity.class);
 

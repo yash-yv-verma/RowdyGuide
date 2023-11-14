@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -30,7 +32,7 @@ public class MainController implements BottomNavigationView.OnNavigationItemSele
     }
 
 
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         System.out.println("LISTENR HIT");
         if(item.getItemId() == R.id.navigation_events){
             Intent intent = new Intent(mainActivity.getApplicationContext(), EventActivity.class);

@@ -12,7 +12,10 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 import edu.utsa.cs3443.rowdyguidefinal.controller.CalendarController;
+import edu.utsa.cs3443.rowdyguidefinal.model.Calendar;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 import edu.utsa.cs3443.rowdyguidefinal.model.StaticEvent;
 
@@ -20,7 +23,7 @@ public class CalendarActivity extends AppCompatActivity {
     CalendarView calendar;
     TextView date_view;
     CalendarController calendarController;
-
+    String Date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,14 @@ public class CalendarActivity extends AppCompatActivity {
 
 
         calendarController = new CalendarController(this);
+        Calendar cal = new Calendar();
+        Event e = cal.makeCalendarEvent("name","date","time");
+        StaticEvent.event = e;
+        cal.addEventToList(cal.makeCalendarEvent("test","22-11-2023","8am"));
+        cal.addEventToList(e);
+        TextView calendarEvent = findViewById(R.id.eventListText);
+
+
 
         // By ID we can use each component
         // which id is assign in xml file
@@ -58,9 +69,14 @@ public class CalendarActivity extends AppCompatActivity {
                                 // format in String type Variable
                                 // Add 1 in month because month
                                 // index is start with 0
-                                String Date
+                                Date
                                         = dayOfMonth + "-"
                                         + (month + 1) + "-" + year;
+                                System.out.println(Date);
+
+                                StaticEvent.eventListStatic = (calendarController.getEventsForDay(Date, cal));
+                                String text = calendarController.getCalendarEvent(StaticEvent.eventListStatic);
+                                calendarEvent.setText(text);
 
 
                                 // set this date in TextView for Display
@@ -69,19 +85,17 @@ public class CalendarActivity extends AppCompatActivity {
                         });
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-        TextView calendarEvent = findViewById(R.id.eventListText);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_calendar);
+
+
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
             calendarController.onNavigationItemSelected(item); //call here
-            System.out.println("here");
             return true;
         });
-        Event e = StaticEvent.getEvent();
-        String text = calendarController.getCalendarEvent(e);
-        calendarEvent.setText(text);
+
 
 
 

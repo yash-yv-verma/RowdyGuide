@@ -1,6 +1,7 @@
 package edu.utsa.cs3443.rowdyguidefinal.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Event implements Serializable {
     private String name;
@@ -12,6 +13,8 @@ public class Event implements Serializable {
         this.date = date;
         this.time = time;
     }
+
+
 
     public String getName() {
         return name;
