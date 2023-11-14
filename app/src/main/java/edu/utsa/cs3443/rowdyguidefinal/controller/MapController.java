@@ -1,2 +1,4 @@
-package edu.utsa.cs3443.rowdyguidefinal.controller;public class MapController {
+package edu.utsa.cs3443.rowdyguidefinal.controller;
+
+public class MapController {
 }

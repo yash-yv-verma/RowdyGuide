@@ -1,2 +1,4 @@
-package edu.utsa.cs3443.rowdyguidefinal.controller;public class EventController {
+package edu.utsa.cs3443.rowdyguidefinal.controller;
+
+public class EventController {
 }
