@@ -16,8 +16,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.ProfileController;
+
 public class ProfileActivity extends AppCompatActivity {
 
+    ProfileController profileController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,38 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navigation_events){
-                    startActivity(new Intent(getApplicationContext(), EventActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_home){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_profile){
-
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_calendar){
-                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_map){
-                    startActivity(new Intent(getApplicationContext(), MapActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-
-                return false;
-            }
+        profileController = new ProfileController(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            profileController.onNavigationItemSelected(item); //call here
+            System.out.println("here");
+            return true;
         });
     }
 }

@@ -13,11 +13,14 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.utsa.cs3443.rowdyguidefinal.controller.CalendarController;
+import edu.utsa.cs3443.rowdyguidefinal.model.Event;
+import edu.utsa.cs3443.rowdyguidefinal.model.StaticEvent;
 
 public class CalendarActivity extends AppCompatActivity {
     CalendarView calendar;
     TextView date_view;
     CalendarController calendarController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +52,7 @@ public class CalendarActivity extends AppCompatActivity {
                                     @NonNull CalendarView view,
                                     int year,
                                     int month,
-                                    int dayOfMonth)
-                            {
+                                    int dayOfMonth) {
 
                                 // Store the value of date with
                                 // format in String type Variable
@@ -61,51 +63,27 @@ public class CalendarActivity extends AppCompatActivity {
                                         + (month + 1) + "-" + year;
 
 
-
                                 // set this date in TextView for Display
                                 date_view.setText(Date);
                             }
                         });
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
-
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        TextView calendarEvent = findViewById(R.id.eventListText);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_calendar);
 
         // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navigation_events){
-                    startActivity(new Intent(getApplicationContext(), EventActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_home){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_calendar){
-
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_map){
-                    startActivity(new Intent(getApplicationContext(), MapActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-
-                return false;
-            }
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            calendarController.onNavigationItemSelected(item); //call here
+            System.out.println("here");
+            return true;
         });
+        Event e = StaticEvent.getEvent();
+        String text = calendarController.getCalendarEvent(e);
+        calendarEvent.setText(text);
+
+
+
     }
-
-
-
 }

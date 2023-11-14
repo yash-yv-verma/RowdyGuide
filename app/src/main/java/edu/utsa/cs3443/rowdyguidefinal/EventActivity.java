@@ -10,7 +10,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.EventController;
+import edu.utsa.cs3443.rowdyguidefinal.model.Event;
+import edu.utsa.cs3443.rowdyguidefinal.model.StaticEvent;
+
 public class EventActivity extends AppCompatActivity {
+    EventController eventController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,41 +23,18 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView=findViewById(R.id.nav_view);
-
+        eventController = new EventController(this);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_events);
 
         // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navigation_events){
-
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_home){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_calendar){
-                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_map){
-                    startActivity(new Intent(getApplicationContext(), MapActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-
-                return false;
-            }
+       // MenuItem item = bottomNavigationView.getMenu().findItem(bottomNavigationView.getSelectedItemId());
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            eventController.onNavigationItemSelected(item); //call here
+            System.out.println("here");
+            return true;
         });
+        Event theEvent = new Event("name", "date","time");
+        StaticEvent.event = theEvent;
     }
 }

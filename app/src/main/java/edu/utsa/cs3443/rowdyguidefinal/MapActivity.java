@@ -13,8 +13,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.MapController;
+
 public class MapActivity extends AppCompatActivity {
 
+    MapController mapController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,38 +27,12 @@ public class MapActivity extends AppCompatActivity {
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_map);
-
+        mapController = new MapController(this);
         // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navigation_events){
-                    startActivity(new Intent(getApplicationContext(), EventActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_home){
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_calendar){
-                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_map){
-
-                    return true;
-                }
-
-                return false;
-            }
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            mapController.onNavigationItemSelected(item); //call here
+            System.out.println("here");
+            return true;
         });
     }
 }

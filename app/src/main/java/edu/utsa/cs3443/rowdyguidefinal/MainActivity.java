@@ -6,16 +6,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.MainController;
 import edu.utsa.cs3443.rowdyguidefinal.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-    private Context context;
+    MainController mainController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,72 +36,21 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);*/
         // Initialize and assign variable
-        BottomNavigationView bottomNavigationView= (BottomNavigationView) findViewById(R.id.nav_view);
-
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        mainController = new MainController(this);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                if(item.getItemId() == R.id.navigation_events){
-                    startActivity(new Intent(getApplicationContext(), EventActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_home){
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_calendar){
-                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navigation_map){
-                    startActivity(new Intent(getApplicationContext(), MapActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-
-                return false;
-            }
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            mainController.onNavigationItemSelected(item); //call here
+            System.out.println("here");
+            return true;
         });
+//        nav.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = nav.OnNavigationItemSelectedListener();
+        MenuItem item = bottomNavigationView.getMenu().findItem(bottomNavigationView.getSelectedItemId());
+
+
     }
 
 
-
-    public boolean onNavigationItemSelectedListener(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.navigation_events){
-            startActivity(new Intent(getApplicationContext(), EventActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        }
-        else if(item.getItemId() == R.id.navigation_home){
-            return true;
-        }
-        else if(item.getItemId() == R.id.navigation_profile){
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        }
-        else if(item.getItemId() == R.id.navigation_calendar){
-            startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        }
-        else if(item.getItemId() == R.id.navigation_map){
-            startActivity(new Intent(getApplicationContext(), MapActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        }
-
-        return false;
-    }
 }
