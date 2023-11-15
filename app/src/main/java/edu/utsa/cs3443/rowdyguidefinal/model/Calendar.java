@@ -7,16 +7,24 @@ public class Calendar {
 
     Event calendarEvent;
     ArrayList<Event> eventList;
-    HashMap<String, Event> dateToEvent;
+    HashMap<String, ArrayList<Event>> dateToEventList;
 
 
     public Calendar(){
         this.calendarEvent = new Event("name", "date", "time");
         this.eventList = new ArrayList<>();
-        this.dateToEvent = new HashMap<>();
+        this.dateToEventList = new HashMap<>();
     }
     public void mapToDay(Event e){
-        dateToEvent.put(e.getDate(),e);
+        if(dateToEventList.containsKey(e.getDate())){
+            dateToEventList.get(e.getDate()).add(e);
+        }
+        else{
+            ArrayList<Event> theList = new ArrayList<>();
+            theList.add(e);
+            dateToEventList.put(e.getDate(),theList);
+        }
+
     }
     public Event getCalendarEvent() {
         return calendarEvent;
@@ -26,17 +34,17 @@ public class Calendar {
         this.calendarEvent = calendarEvent;
     }
 
-    public HashMap<String, Event> getDateToEvent() {
-        return dateToEvent;
+    public HashMap<String, ArrayList<Event>> getDateToEventList() {
+        return dateToEventList;
     }
 
-    public void setDateToEvent(HashMap<String, Event> dateToEvent) {
-        this.dateToEvent = dateToEvent;
+    public void setDateToEventList(HashMap<String, ArrayList<Event>> dateToEventList) {
+        this.dateToEventList = dateToEventList;
     }
 
     public Event makeCalendarEvent(String name, String date, String time){
         Event e = new Event(name, date, time);
-        dateToEvent.put(e.getDate(),e);
+        mapToDay(e);
         return e;
     }
     public ArrayList<Event> getEventList() {

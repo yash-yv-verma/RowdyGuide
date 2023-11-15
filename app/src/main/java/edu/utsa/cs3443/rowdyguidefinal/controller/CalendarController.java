@@ -27,27 +27,8 @@ public class CalendarController {
         this.calendarActivity = activity;
     }
 
-    public ArrayList<Event> getEventsForDay(String date, Calendar cal){
-        ArrayList<Event> valuesList = getValuesForKey(cal.getDateToEvent(), date);
 
-        return valuesList;
-    }
-    private static ArrayList<Event> getValuesForKey(HashMap<String, Event> map, String key) {
-        ArrayList<Event> valuesList = new ArrayList<>();
 
-        // Iterate through the entries in the HashMap
-        for (HashMap.Entry<String, Event> entry : map.entrySet()) {
-            // Check if the entry key matches the target key
-
-            if (entry.getKey().equals(key)) {
-
-                // Add the value to the ArrayList
-                valuesList.add(entry.getValue());
-            }
-        }
-
-        return valuesList;
-    }
     public String getCalendarEvent(ArrayList<Event> events){
         StringBuilder theText = new StringBuilder();
         if(!events.isEmpty()) {
