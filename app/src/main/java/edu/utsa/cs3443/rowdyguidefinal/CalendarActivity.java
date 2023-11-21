@@ -32,13 +32,11 @@ public class CalendarActivity extends AppCompatActivity {
 
         calendarController = new CalendarController(this);
         Calendar cal = new Calendar();
-        Event e = cal.makeCalendarEvent("name","date","time");
-        StaticEvent.event = e;
+
         cal.addEventToList(cal.makeCalendarEvent("Science Test","22-11-2023","8am"));
 
         cal.addEventToList(cal.makeCalendarEvent("Game night","22-11-2023","7pm"));
 
-        cal.addEventToList(e);
         TextView calendarEvent = findViewById(R.id.eventListText);
 
 
