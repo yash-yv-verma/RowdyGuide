@@ -1,23 +1,21 @@
 package edu.utsa.cs3443.rowdyguidefinal.controller;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
 
-public class MainController implements BottomNavigationView.OnNavigationItemSelectedListener {
+import android.content.Intent;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class MainController implements View.OnClickListener {
     private MainActivity mainActivity;
     public MainController(MainActivity activity) {
         mainActivity = activity;
@@ -31,48 +29,75 @@ public class MainController implements BottomNavigationView.OnNavigationItemSele
         this.mainActivity = mainActivity;
     }
 
+    private boolean validate(String username, String password ) throws IOException {
+        String filename = "userLoginInformation.csv";
+        File readFrom = new File(mainActivity.getApplicationContext().getFilesDir(), filename);
+        try {
+            byte[] content = new byte[(int) readFrom.length()];
 
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        System.out.println("LISTENR HIT");
-        if(item.getItemId() == R.id.navigation_events){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), EventTabActivity.class);
+            FileInputStream stream = new FileInputStream(readFrom);
+            stream.read(content);
 
-            mainActivity.startActivity(intent);
+            ArrayList<String> userInfo = new ArrayList<>(Arrays.asList(new String(content).split("\n")));
 
-            mainActivity.overridePendingTransition(0,0);
+            for (String user : userInfo) {
+                String[] userTokens = user.split(",");
+                if (userTokens[0].equals(username) & userTokens[1].equals(password)) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (FileNotFoundException e){
+            readFrom.createNewFile();
+            return false;
         }
-        else if(item.getItemId() == R.id.navigation_home){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), MainActivity.class);
-
-            mainActivity.startActivity(intent);
-
-            mainActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_profile){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), ProfileActivity.class);
-
-            mainActivity.startActivity(intent);
-
-            mainActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_calendar){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), CalendarActivity.class);
-
-            mainActivity.startActivity(intent);
-
-            mainActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_map){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), MapActivity.class);
-
-            mainActivity.startActivity(intent);
-
-            mainActivity.overridePendingTransition(0,0);
-        }
-
-        return true;
     }
 
+    private void onClickLogIn(View v){
+        EditText usernameEditText = mainActivity.findViewById(R.id.username);
+        String username = usernameEditText.getText().toString();
+        if ( username.trim().equals("") ){
+            Toast.makeText(this.mainActivity, "Username required.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        EditText passwordEditText = mainActivity.findViewById(R.id.password);
+        String password = passwordEditText.getText().toString();
+        if ( password.trim().equals("") ){
+            Toast.makeText(this.mainActivity, "Password required.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        try {
+            if ( validate(username,password) ) {
+                Intent intent = new Intent(mainActivity, NewAccountActivity.class);
+                usernameEditText.setText("");
+                passwordEditText.setText("");
+                v.getContext().startActivity(intent);
+            } else {
+                String toastText = "Invalid username or password.";
+                Toast.makeText(this.mainActivity, toastText, Toast.LENGTH_LONG).show();
+                passwordEditText.setText("");
+            }
+        } catch (IOException e) {
+            Toast.makeText(this.mainActivity, "User file cannot be accessed.", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    private void onClickCreateAccount(View v){
+        Intent intent = new Intent(mainActivity, NewAccountActivity.class);
+        v.getContext().startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int buttonId = view.getId();
+
+        if ( buttonId == R.id.loginButton ) {
+            onClickLogIn(view);
+        } else if ( buttonId == R.id.createAccountButton ){
+            onClickCreateAccount(view);
+        }
+    }
 }
