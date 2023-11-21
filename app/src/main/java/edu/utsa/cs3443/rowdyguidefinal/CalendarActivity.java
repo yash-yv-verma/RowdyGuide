@@ -51,39 +51,30 @@ public class CalendarActivity extends AppCompatActivity {
                 findViewById(R.id.date_view);
 
         // Add Listener in calendar
+        // In this Listener have one method
+// and in this method we will
+// get the value of DAYS, MONTH, YEARS
         calendar
                 .setOnDateChangeListener(
-                        new CalendarView
-                                .OnDateChangeListener() {
-                            @Override
+                        (view, year, month, dayOfMonth) -> {
 
-                            // In this Listener have one method
-                            // and in this method we will
-                            // get the value of DAYS, MONTH, YEARS
-                            public void onSelectedDayChange(
-                                    @NonNull CalendarView view,
-                                    int year,
-                                    int month,
-                                    int dayOfMonth) {
+                            // Store the value of date with
+                            // format in String type Variable
+                            // Add 1 in month because month
+                            // index is start with 0
+                            Date
+                                    = dayOfMonth + "-"
+                                    + (month + 1) + "-" + year;
+                            System.out.println(Date);
 
-                                // Store the value of date with
-                                // format in String type Variable
-                                // Add 1 in month because month
-                                // index is start with 0
-                                Date
-                                        = dayOfMonth + "-"
-                                        + (month + 1) + "-" + year;
-                                System.out.println(Date);
+                            StaticEvent.eventListStatic = cal.getDateToEventList().get(Date);
 
-                                StaticEvent.eventListStatic = cal.getDateToEventList().get(Date);
-
-                                String text = calendarController.getCalendarEvent(StaticEvent.eventListStatic);
-                                calendarEvent.setText(text);
+                            String text = calendarController.getCalendarEvent(StaticEvent.eventListStatic);
+                            calendarEvent.setText(text);
 
 
-                                // set this date in TextView for Display
-                                date_view.setText(Date);
-                            }
+                            // set this date in TextView for Display
+                            date_view.setText(Date);
                         });
 
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
