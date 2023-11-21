@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.rowdyguidefinal.controller;
 
+import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
 
