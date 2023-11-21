@@ -75,6 +75,7 @@ public class MainController implements View.OnClickListener {
                 Intent intent = new Intent(mainActivity, ProfileActivity.class);
                 usernameEditText.setText("");
                 passwordEditText.setText("");
+                intent.putExtra("username", username);
                 v.getContext().startActivity(intent);
             } else {
                 String toastText = "Invalid username or password.";
