@@ -31,12 +31,16 @@ public class CalendarController {
 
     public String getCalendarEvent(ArrayList<Event> events){
         StringBuilder theText = new StringBuilder();
-        if(!events.isEmpty()) {
+        if(events !=null) {
             for (Event e : events) {
                 theText.append(e.getName() + " ");
                 theText.append(e.getDate() + " ");
                 theText.append(e.getTime() + "\n");
             }
+
+        }
+        else{
+            return "";
         }
 
         return theText.toString();
