@@ -1,10 +1,12 @@
-package edu.utsa.cs3443.myapplication;
+package edu.utsa.cs3443.rowdyguidefinal.controller;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
+import edu.utsa.cs3443.rowdyguidefinal.R;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import edu.utsa.cs3443.rowdyguidefinal.NewAccountActivity;
 
 public class NewAccountController implements View.OnClickListener {
 

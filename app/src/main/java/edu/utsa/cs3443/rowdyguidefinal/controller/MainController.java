@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.rowdyguidefinal.controller;
 
+import edu.utsa.cs3443.rowdyguidefinal.NewAccountActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
@@ -71,7 +72,7 @@ public class MainController implements View.OnClickListener {
 
         try {
             if ( validate(username,password) ) {
-                Intent intent = new Intent(mainActivity, NewAccountActivity.class);
+                Intent intent = new Intent(mainActivity, ProfileActivity.class);
                 usernameEditText.setText("");
                 passwordEditText.setText("");
                 v.getContext().startActivity(intent);

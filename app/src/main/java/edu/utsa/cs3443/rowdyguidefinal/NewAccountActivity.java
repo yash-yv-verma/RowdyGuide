@@ -1,9 +1,11 @@
-package edu.utsa.cs3443.myapplication;
+package edu.utsa.cs3443.rowdyguidefinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+
+import edu.utsa.cs3443.rowdyguidefinal.controller.NewAccountController;
 
 public class NewAccountActivity extends AppCompatActivity {
 
