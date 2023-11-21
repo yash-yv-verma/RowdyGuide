@@ -1,42 +1,78 @@
 package edu.utsa.cs3443.rowdyguidefinal.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+public class Event {
 
-public class Event implements Serializable {
-    private String name;
-    private String date;
-    private String time;
+    private String eventName;
+    private String eventDate;
+    private String eventTime;
+    private String eventLocation;
+    private String eventDescription;
+    private String eventTicketPrice;
+    private String eventType;
 
-    public Event(String name, String date, String time){
-        this.name = name;
-        this.date = date;
-        this.time = time;
+    public Event(String eventName, String eventDate, String eventTime, String eventLocation, String eventDescription, String eventTicketPrice, String eventType) {
+        this.eventName = eventName;
+        this.eventDate = eventDate;
+        this.eventTime = eventTime;
+        this.eventLocation = eventLocation;
+        this.eventDescription = eventDescription;
+        this.eventTicketPrice = eventTicketPrice;
+        this.eventType = eventType;
     }
 
-
-
-    public String getName() {
-        return name;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
-    public String getDate() {
-        return date;
+    public String getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
-    public String getTime() {
-        return time;
+    public String getEventTime() {
+        return eventTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public String getEventTicketPrice() {
+        return eventTicketPrice;
+    }
+
+    public void setEventTicketPrice(String eventTicketPrice) {
+        this.eventTicketPrice = eventTicketPrice;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 }

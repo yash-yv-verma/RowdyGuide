@@ -1,69 +1,62 @@
 package edu.utsa.cs3443.rowdyguidefinal.controller;
-
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.View;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Map;
-
-import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
-import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
-import edu.utsa.cs3443.rowdyguidefinal.R;
-
-public class MapController{
-    private MapActivity mapActivity;
-
-    public MapController(MapActivity activity) {
-        mapActivity = activity;
-    }
-
-    public MapActivity getMapActivity() {
-        return mapActivity;
-    }
-
-    public void setMapActivity(MapActivity mapActivity) {
-        this.mapActivity = mapActivity;
-    }
-
-
-    public boolean onNavigationItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.navigation_events) {
-            Intent intent = new Intent(mapActivity.getApplicationContext(), EventActivity.class);
-
-            mapActivity.startActivity(intent);
-
-            mapActivity.overridePendingTransition(0,0);
-        } else if (item.getItemId() == R.id.navigation_home) {
-            Intent intent = new Intent(mapActivity.getApplicationContext(), MainActivity.class);
-
-            mapActivity.startActivity(intent);
-
-            mapActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_profile) {
-            Intent intent = new Intent(mapActivity.getApplicationContext(), ProfileActivity.class);
-
-            mapActivity.startActivity(intent);
-
-            mapActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_calendar) {
-            Intent intent = new Intent(mapActivity.getApplicationContext(), CalendarActivity.class);
-
-            mapActivity.startActivity(intent);
-
-            mapActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_map) {
-            Intent intent = new Intent(mapActivity.getApplicationContext(), MapActivity.class);
-
-            mapActivity.startActivity(intent);
-
-            mapActivity.overridePendingTransition(0, 0);
-        }
-        return true;
-
-    }
-}
+//
+//import android.app.Activity;
+//
+//import androidx.annotation.NonNull;
+//
+//import com.google.android.gms.maps.CameraUpdateFactory;
+//import com.google.android.gms.maps.GoogleMap;
+//import com.google.android.gms.maps.OnMapReadyCallback;
+//import com.google.android.gms.maps.SupportMapFragment;
+//import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+//import com.google.android.gms.maps.model.CameraPosition;
+//import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.maps.model.LatLngBounds;
+//import com.google.android.gms.maps.model.MarkerOptions;
+//
+//public class MapController implements OnMapReadyCallback {
+//    private Activity activity;
+//    private GoogleMap myMap;
+//    private SupportMapFragment mapFragment;
+//    public MapController(OnMapReadyCallback activity, GoogleMap myMap, SupportMapFragment mapFragment) {
+//        this.activity = activity;
+//        this.mapFragment = mapFragment;
+//        this.myMap = myMap;
+//    }
+//
+//    @Override
+//    public void onMapReady(@NonNull GoogleMap googleMap) {
+//
+//        // restricts where our camera can go / creates our camera's boundaries
+//        LatLngBounds restrictedBounds = new LatLngBounds(
+//                new LatLng(29.578295, -98.630265),
+//                new LatLng(29.586667, -98.611938)
+//        );
+//
+//        // puts our boundaries on our google map
+//        googleMap.setLatLngBoundsForCameraTarget(restrictedBounds);
+//
+//        // creates a location pinpoint of 'ourself'
+//        LatLng sydney = new LatLng(29.584545, -98.616714);
+//
+//        // zooms in and positions the camera
+//        float zoomLevel = 16.0f;
+//        CameraPosition cameraPosition = new CameraPosition.Builder()
+//                .target(sydney)
+//                .zoom(zoomLevel)
+//                .build();
+//
+//        // actually sets the camera position on the map
+//        myMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//
+//        myMap.addMarker(new MarkerOptions().position(sydney).title("UTSA"));
+//        MarkerOptions options = new MarkerOptions().position(sydney).title("UTSA");
+//        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//        myMap.addMarker(options);
+//
+//
+//        // zoom in and out on the map
+//        googleMap.getUiSettings().setZoomControlsEnabled(true);
+//
+//    }
+//}

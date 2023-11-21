@@ -11,18 +11,18 @@ public class Calendar {
 
 
     public Calendar(){
-        this.calendarEvent = new Event("name", "date", "time");
+        this.calendarEvent = new Event("name", "date", "time", "", "", "", "");
         this.eventList = new ArrayList<>();
         this.dateToEventList = new HashMap<>();
     }
     public void mapToDay(Event e){
-        if(dateToEventList.containsKey(e.getDate())){
-            dateToEventList.get(e.getDate()).add(e);
+        if(dateToEventList.containsKey(e.getEventDate())){
+            dateToEventList.get(e.getEventDate()).add(e);
         }
         else{
             ArrayList<Event> theList = new ArrayList<>();
             theList.add(e);
-            dateToEventList.put(e.getDate(),theList);
+            dateToEventList.put(e.getEventDate(),theList);
         }
 
     }
@@ -43,7 +43,7 @@ public class Calendar {
     }
 
     public Event makeCalendarEvent(String name, String date, String time){
-        Event e = new Event(name, date, time);
+        Event e = new Event(name, date, time, "", "", "", "");
         mapToDay(e);
         return e;
     }

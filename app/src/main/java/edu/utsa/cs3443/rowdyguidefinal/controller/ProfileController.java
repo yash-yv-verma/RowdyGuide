@@ -5,7 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
+import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
@@ -30,7 +30,7 @@ public class ProfileController {
 
     public boolean onNavigationItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.navigation_events) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), EventActivity.class);
+            Intent intent = new Intent(profileActivity.getApplicationContext(), EventTabActivity.class);
 
             profileActivity.startActivity(intent);
 

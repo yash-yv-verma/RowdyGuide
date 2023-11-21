@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
+import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
@@ -31,12 +31,16 @@ public class CalendarController {
 
     public String getCalendarEvent(ArrayList<Event> events){
         StringBuilder theText = new StringBuilder();
-        if(!events.isEmpty()) {
+        if(events !=null) {
             for (Event e : events) {
-                theText.append(e.getName() + " ");
-                theText.append(e.getDate() + " ");
-                theText.append(e.getTime() + "\n");
+                theText.append(e.getEventName() + " ");
+                theText.append(e.getEventDate() + " ");
+                theText.append(e.getEventTime() + "\n");
             }
+
+        }
+        else{
+            return "";
         }
 
         return theText.toString();
@@ -62,7 +66,7 @@ public class CalendarController {
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.navigation_events){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), EventActivity.class);
+            Intent intent = new Intent(calendarActivity.getApplicationContext(), EventTabActivity.class);
 
             calendarActivity.startActivity(intent);
 

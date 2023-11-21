@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
+import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
@@ -35,7 +35,7 @@ public class MainController implements BottomNavigationView.OnNavigationItemSele
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         System.out.println("LISTENR HIT");
         if(item.getItemId() == R.id.navigation_events){
-            Intent intent = new Intent(mainActivity.getApplicationContext(), EventActivity.class);
+            Intent intent = new Intent(mainActivity.getApplicationContext(), EventTabActivity.class);
 
             mainActivity.startActivity(intent);
 
