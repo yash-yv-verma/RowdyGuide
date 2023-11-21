@@ -24,6 +24,7 @@ public class CalendarActivity extends AppCompatActivity {
     TextView date_view;
     CalendarController calendarController;
     String Date;
+    ArrayList<Event> listOfEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +33,11 @@ public class CalendarActivity extends AppCompatActivity {
 
         calendarController = new CalendarController(this);
         Calendar cal = new Calendar();
+        listOfEvents = new ArrayList<>();
+        listOfEvents.add(cal.makeCalendarEvent("Science Test","22-11-2023","8am"));
+        listOfEvents.add(cal.makeCalendarEvent("Game night","22-11-2023","7pm"));
 
-        cal.addEventToList(cal.makeCalendarEvent("Science Test","22-11-2023","8am"));
-
-        cal.addEventToList(cal.makeCalendarEvent("Game night","22-11-2023","7pm"));
-
+        cal.addListOfEventsToList(listOfEvents);
         TextView calendarEvent = findViewById(R.id.eventListText);
 
 

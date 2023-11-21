@@ -54,6 +54,11 @@ public class Calendar {
     public void setEventList(ArrayList<Event> eventList) {
         this.eventList = eventList;
     }
+    public void addListOfEventsToList(ArrayList<Event> events){
+        for(Event e: events){
+            addEventToList(e);
+        }
+    }
     public void addEventToList(Event e){
         this.eventList.add(e);
     }
