@@ -7,6 +7,22 @@
     android:background="#FFFFFF"
     tools:context=".NewAccountActivity">
 
+    <TextView
+        android:id="@+id/CreateAccountText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Create Account"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30sp"
+        android:background="@color/light_blue"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:fontFamily="@font/syncopate_bold"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CreateAccountText"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout

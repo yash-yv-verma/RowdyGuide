@@ -6,11 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".EditProfileActivity">
 
+    <TextView
+        android:id="@+id/EditProfileText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Edit Profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30sp"
+        android:background="@color/light_blue"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:fontFamily="@font/syncopate_bold"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
+        app:layout_constraintTop_toBottomOf="@id/EditProfileText"
         android:gravity="center"
         android:orientation="vertical">
 
