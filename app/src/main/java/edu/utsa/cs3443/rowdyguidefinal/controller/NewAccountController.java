@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import edu.utsa.cs3443.rowdyguidefinal.EditProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
 import java.io.File;
@@ -63,7 +64,13 @@ public class NewAccountController implements View.OnClickListener {
         File writeTo = new File(newAccountActivity.getApplicationContext().getFilesDir(), filename);
         try{
             FileOutputStream writer = new FileOutputStream( writeTo );
-            String loginInfo = username + "," + password + "\n";
+            String loginInfo = username + ",";
+            loginInfo += password + ",";
+            loginInfo += "null" + ","; //name field
+            loginInfo += "null" + ","; //classification field
+            loginInfo += "null" + ","; //email field
+            loginInfo += "null" + "\n"; //phone number field
+
             writer.write( loginInfo.getBytes() );
             writer.close();
         } catch(FileNotFoundException e){
@@ -92,8 +99,8 @@ public class NewAccountController implements View.OnClickListener {
         try {
             if (validNewUsername(username)) {
                 createAccount(username, password);
-                Intent intent = new Intent(newAccountActivity, MainActivity.class);
-                intent.putExtra("newAccountCreated", true);
+                Intent intent = new Intent(newAccountActivity, EditProfileActivity.class);
+                intent.putExtra("username", username);
                 v.getContext().startActivity(intent);
             } else {
                 Toast.makeText(this.newAccountActivity, "Username Taken.", Toast.LENGTH_LONG).show();

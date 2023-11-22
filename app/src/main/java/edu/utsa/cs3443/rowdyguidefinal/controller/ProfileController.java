@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
+import edu.utsa.cs3443.rowdyguidefinal.EditProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
@@ -34,6 +35,10 @@ public class ProfileController implements View.OnClickListener {
         if ( id == R.id.logoutButton){
             Intent intent = new Intent(profileActivity, MainActivity.class);
             intent.putExtra("logout", true);
+            v.getContext().startActivity(intent);
+        } else if (id == R.id.editButton ){
+            Intent intent = new Intent(profileActivity, EditProfileActivity.class);
+            intent.putExtra("saveChanges", true); //indicates we want to edit profile
             v.getContext().startActivity(intent);
         }
 
