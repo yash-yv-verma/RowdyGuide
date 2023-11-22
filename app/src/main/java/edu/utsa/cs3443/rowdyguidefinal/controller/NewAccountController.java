@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.utsa.cs3443.rowdyguidefinal.NewAccountActivity;
+import edu.utsa.cs3443.rowdyguidefinal.model.User;
 
 public class NewAccountController implements View.OnClickListener {
 
@@ -75,6 +76,7 @@ public class NewAccountController implements View.OnClickListener {
             writer.close();
         } catch(FileNotFoundException e){
             writeTo.createNewFile();
+            createAccount(username,password);
         }
 
 
@@ -97,10 +99,11 @@ public class NewAccountController implements View.OnClickListener {
         }
 
         try {
-            if (validNewUsername(username)) {
+            if ( validNewUsername(username) ) {
                 createAccount(username, password);
+                User user = new User( username, password);
                 Intent intent = new Intent(newAccountActivity, EditProfileActivity.class);
-                intent.putExtra("username", username);
+                intent.putExtra("user", user);
                 v.getContext().startActivity(intent);
             } else {
                 Toast.makeText(this.newAccountActivity, "Username Taken.", Toast.LENGTH_LONG).show();

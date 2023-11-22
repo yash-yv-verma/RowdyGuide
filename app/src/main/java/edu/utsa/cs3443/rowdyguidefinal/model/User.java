@@ -28,6 +28,16 @@ public class User implements Serializable {
         this.contact = contact;
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.name = "null";
+        this.classification = "null";
+        this.email = "null";
+        this.contact = "null";
+
+    }
+
     public String getUsername() {
         return username;
     }
