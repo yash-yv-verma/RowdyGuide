@@ -36,8 +36,10 @@ public class CalendarActivity extends AppCompatActivity {
         listOfEvents = new ArrayList<>();
         listOfEvents.add(cal.makeCalendarEvent("Science Test","22-11-2023","8am"));
         listOfEvents.add(cal.makeCalendarEvent("Game night","22-11-2023","7pm"));
+        listOfEvents.add(cal.makeCalendarEvent("Baseball Game","30-11-2023","2pm"));
 
         cal.addListOfEventsToList(listOfEvents);
+        cal.setEventList(listOfEvents);
         TextView calendarEvent = findViewById(R.id.eventListText);
 
 
@@ -68,9 +70,9 @@ public class CalendarActivity extends AppCompatActivity {
                                     + (month + 1) + "-" + year;
                             System.out.println(Date);
 
-                            StaticEvent.eventListStatic = cal.getDateToEventList().get(Date);
+                            //StaticEvent.eventListStatic = cal.getDateToEventList().get(Date);
 
-                            String text = calendarController.getCalendarEvent(StaticEvent.eventListStatic);
+                            String text = calendarController.getCalendarEvent(cal.getDateToEventList().get(Date));
                             calendarEvent.setText(text);
 
 
