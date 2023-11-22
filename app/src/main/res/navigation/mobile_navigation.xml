@@ -6,15 +6,9 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:label="@string/title_home"
-        tools:layout="@layout/activity_main" />
-
-    <fragment
         android:id="@+id/navigation_events"
         android:label="@string/title_events"
-        tools:layout="@layout/activity_event" />
-
+        tools:layout="@layout/activity_event_tab" />
     <fragment
         android:id="@+id/navigation_calendar"
         android:label="@string/title_calendar"

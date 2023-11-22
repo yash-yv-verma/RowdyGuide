@@ -63,42 +63,6 @@ public class EventTabController implements View.OnClickListener{
         this.events = events;
     }
 
-    public boolean onNavigationItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.navigation_events){
-            return true;
-        }
-        else if(item.getItemId() == R.id.navigation_home){
-            Intent intent = new Intent(eventTabActivity.getApplicationContext(), MainActivity.class);
-
-            eventTabActivity.startActivity(intent);
-
-            eventTabActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_profile){
-            Intent intent = new Intent(eventTabActivity.getApplicationContext(), ProfileActivity.class);
-
-            eventTabActivity.startActivity(intent);
-
-            eventTabActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_calendar){
-            Intent intent = new Intent(eventTabActivity.getApplicationContext(), CalendarActivity.class);
-
-            eventTabActivity.startActivity(intent);
-
-            eventTabActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_map){
-            Intent intent = new Intent(eventTabActivity.getApplicationContext(), MapActivity.class);
-
-            eventTabActivity.startActivity(intent);
-
-            eventTabActivity.overridePendingTransition(0,0);
-        }
-        return true;
-
-    }
-
     public void onClick(View v){
         int idOfButtonPressed = v.getId();
         Context context = v.getContext();

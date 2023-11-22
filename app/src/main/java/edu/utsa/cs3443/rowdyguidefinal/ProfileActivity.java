@@ -3,7 +3,7 @@ package edu.utsa.cs3443.rowdyguidefinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.NavigationController;
 import edu.utsa.cs3443.rowdyguidefinal.controller.ProfileController;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     ProfileController profileController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
@@ -30,10 +32,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
-        profileController = new ProfileController(this);
+        NavigationController<ProfileActivity> navigationController = new NavigationController<>(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
-            profileController.onNavigationItemSelected(item); //call here
+            navigationController.onNavigationItemSelected(item); //call here
             return true;
         });
+
+        ProfileController profileController = new ProfileController(this);
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(profileController);
+
     }
 }

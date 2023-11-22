@@ -27,8 +27,6 @@ public class CalendarController {
         this.calendarActivity = activity;
     }
 
-
-
     public String getCalendarEvent(ArrayList<Event> events){
         StringBuilder theText = new StringBuilder();
         if(events !=null) {
@@ -60,48 +58,6 @@ public class CalendarController {
 
     public void setEvent(Event event) {
         this.event = event;
-    }
-
-
-
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.navigation_events){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), EventTabActivity.class);
-
-            calendarActivity.startActivity(intent);
-
-            calendarActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_home){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), MainActivity.class);
-
-            calendarActivity.startActivity(intent);
-
-            calendarActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_profile){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), ProfileActivity.class);
-
-            calendarActivity.startActivity(intent);
-
-            calendarActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_calendar){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), CalendarActivity.class);
-
-            calendarActivity.startActivity(intent);
-
-            calendarActivity.overridePendingTransition(0,0);
-        }
-        else if(item.getItemId() == R.id.navigation_map){
-            Intent intent = new Intent(calendarActivity.getApplicationContext(), MapActivity.class);
-
-            calendarActivity.startActivity(intent);
-
-            calendarActivity.overridePendingTransition(0,0);
-        }
-        return true;
-
     }
 
 

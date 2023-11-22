@@ -3,6 +3,8 @@ package edu.utsa.cs3443.rowdyguidefinal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import edu.utsa.cs3443.rowdyguidefinal.controller.NavigationController;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 
 import android.annotation.SuppressLint;
@@ -23,6 +25,7 @@ public class EventTabActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_tab);
 
@@ -47,12 +50,12 @@ public class EventTabActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_events);
-
-
+        NavigationController<EventTabActivity> navigationController = new NavigationController<>(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
-            controller.onNavigationItemSelected(item); //call here
+            navigationController.onNavigationItemSelected(item); //call here
             return true;
         });
     }

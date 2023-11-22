@@ -30,12 +30,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import edu.utsa.cs3443.rowdyguidefinal.controller.NavigationController;
+
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap myMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
@@ -46,35 +49,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
         // Set Home selected
+
         bottomNavigationView.setSelectedItemId(R.id.navigation_map);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.navigation_events) {
-                    startActivity(new Intent(getApplicationContext(), EventTabActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_home) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_profile) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_calendar) {
-                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (item.getItemId() == R.id.navigation_map) {
-
-                    return true;
-                }
-
-                return false;
-            }
+        NavigationController<MapActivity> navigationController = new NavigationController<>(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
+            navigationController.onNavigationItemSelected(item); //call here
+            return true;
         });
 
     }

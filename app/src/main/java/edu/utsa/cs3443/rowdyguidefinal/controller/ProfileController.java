@@ -8,10 +8,11 @@ import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
 import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
+import edu.utsa.cs3443.rowdyguidefinal.NewAccountActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
 
-public class ProfileController {
+public class ProfileController implements View.OnClickListener {
     private ProfileActivity profileActivity;
 
     public ProfileController(ProfileActivity activity) {
@@ -27,40 +28,14 @@ public class ProfileController {
         this.profileActivity = profileActivity;
     }
 
+    public void onClick(View v){
 
-    public boolean onNavigationItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.navigation_events) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), EventTabActivity.class);
-
-            profileActivity.startActivity(intent);
-
-            profileActivity.overridePendingTransition(0,0);
-        } else if (item.getItemId() == R.id.navigation_home) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), MainActivity.class);
-
-            profileActivity.startActivity(intent);
-
-            profileActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_profile) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), ProfileActivity.class);
-
-            profileActivity.startActivity(intent);
-
-            profileActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_calendar) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), CalendarActivity.class);
-
-            profileActivity.startActivity(intent);
-
-            profileActivity.overridePendingTransition(0, 0);
-        } else if (item.getItemId() == R.id.navigation_map) {
-            Intent intent = new Intent(profileActivity.getApplicationContext(), MapActivity.class);
-
-            profileActivity.startActivity(intent);
-
-            profileActivity.overridePendingTransition(0, 0);
+        int id = v.getId();
+        if ( id == R.id.logoutButton){
+            Intent intent = new Intent(profileActivity, MainActivity.class);
+            intent.putExtra("logout", true);
+            v.getContext().startActivity(intent);
         }
 
-        return true;
     }
 }

@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import edu.utsa.cs3443.rowdyguidefinal.controller.CalendarController;
+import edu.utsa.cs3443.rowdyguidefinal.controller.NavigationController;
 import edu.utsa.cs3443.rowdyguidefinal.model.Calendar;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 import edu.utsa.cs3443.rowdyguidefinal.model.StaticEvent;
@@ -27,6 +28,7 @@ public class CalendarActivity extends AppCompatActivity {
     ArrayList<Event> listOfEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
@@ -81,12 +83,9 @@ public class CalendarActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_calendar);
-
-
-
-        // Perform item selected listener
+        NavigationController<CalendarActivity> navigationController = new NavigationController<>(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> { // using lamda
-            calendarController.onNavigationItemSelected(item); //call here
+            navigationController.onNavigationItemSelected(item); //call here
             return true;
         });
 

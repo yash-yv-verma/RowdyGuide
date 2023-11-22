@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
-import edu.utsa.cs3443.rowdyguidefinal.EventActivity;
+import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
@@ -37,7 +37,7 @@ public class NavigationController<T extends AppCompatActivity> implements Bottom
         Class<?> targetActivityClass = null;
 
         if (itemId == R.id.navigation_events) {
-            targetActivityClass = EventActivity.class;
+            targetActivityClass = EventTabActivity.class;
         } else if (itemId == R.id.navigation_profile) {
             targetActivityClass = ProfileActivity.class;
         } else if (itemId == R.id.navigation_calendar) {
