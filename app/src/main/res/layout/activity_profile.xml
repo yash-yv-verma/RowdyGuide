@@ -6,27 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <TextView
+        android:id="@+id/ProfileText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Rowdy Profile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30sp"
+        android:background="@color/light_blue"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:fontFamily="@font/syncopate_bold"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/ProfileText"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/ProfileText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="0dp"
-            android:text="Rowdy Profile"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/syncopate_bold"
-            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -49,30 +53,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:fontFamily="@font/syncopate_bold"
                 android:text="Name" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:fontFamily="@font/abeezee"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 android:text="Rowdy the Roadrunner" />
 
             <TextView
                 android:id="@+id/ClassText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:text="Classification" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Classification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="text"
+                android:fontFamily="@font/abeezee"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 android:text="Super Senior" />
 
             <TextView
@@ -82,12 +91,14 @@
                 android:layout_marginTop="25dp"
                 android:text="Email" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:fontFamily="@font/abeezee"
+                android:textColor="@color/black"
+                android:textSize="20dp"
                 android:text="RowdyBird@my.utsa.edu" />
 
             <TextView
@@ -97,42 +108,53 @@
                 android:layout_marginTop="25dp"
                 android:text="Emergency Contact" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="(210)417-3984" />
+                android:fontFamily="@font/abeezee"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="210-417-3984" />
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/logoutButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#FFB347"
-            android:fontFamily="@font/abeezee"
-            android:text="Logout"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:orientation="vertical"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp">
 
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#FFB347"
-            android:fontFamily="@font/abeezee"
-            android:text="Logout"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/dark_blue"
+                android:fontFamily="@font/abeezee"
+                android:text="Edit Profile"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FFB347"
+                android:fontFamily="@font/abeezee"
+                android:text="Logout"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp" />
+
+        </LinearLayout>
 
 
     </LinearLayout>
