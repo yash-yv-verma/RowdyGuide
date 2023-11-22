@@ -17,6 +17,7 @@ import edu.utsa.cs3443.rowdyguidefinal.EditProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
+import edu.utsa.cs3443.rowdyguidefinal.model.User;
 
 public class EditProfileController implements View.OnClickListener {
 
@@ -86,7 +87,7 @@ public class EditProfileController implements View.OnClickListener {
     public char getMode(View view){
         Button button = view.findViewById(R.id.editProfileButton);
         CharSequence text = button.getText();
-        if ( text.equals("change") ){
+        if ( editProfileActivity.getIntent().getBooleanExtra("saveChanges", false) ){
             return 'e'; //e for edit
         } else{
             return 'c';//c for create
@@ -102,8 +103,12 @@ public class EditProfileController implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-
+        User user = (User) editProfileActivity.getIntent().getSerializableExtra("user");
         char editMode = getMode(view);
+        String name = getText(R.id.Name, view);
+        String classification = getText(R.id.Classification, view);
+        String email = getText(R.id.Email, view);
+        String contact = getText(R.id.Contact, view);
 
         //all fields are required for creating an account
         if ( editMode == 'c') {
@@ -123,26 +128,30 @@ public class EditProfileController implements View.OnClickListener {
                 Toast.makeText(this.editProfileActivity, "Phone number required", Toast.LENGTH_LONG).show();
                 return;
             }
-        }
+        } else { //change user fields if just editing account
+            if (name.trim().equals("")) {
+                name = "null";
+            } else {
+                user.setName(name);
+            }
 
-        String name = getText(R.id.Name, view);
-        if ( name.trim().equals("") ){
-            name = "null";
-        }
+            if (classification.trim().equals("")) {
+                classification = "null";
+            } else {
+                user.setClassification(classification);
+            }
 
-        String classification = getText(R.id.Classification, view);
-        if ( classification.trim().equals("") ){
-            classification = "null";
-        }
+            if (email.trim().equals("")) {
+                email = "null";
+            } else {
+                user.setEmail(email);
+            }
 
-        String email = getText(R.id.Email, view);
-        if ( email.trim().equals("") ){
-            email = "null";
-        }
-
-        String contact = getText(R.id.Contact, view);
-        if ( contact.trim().equals("") ){
-            contact = "null";
+            if (contact.trim().equals("")) {
+                contact = "null";
+            } else {
+                user.setContact(contact);
+            }
         }
 
 
@@ -153,6 +162,7 @@ public class EditProfileController implements View.OnClickListener {
         if ( editMode == 'e') {
             Intent nextActivity = new Intent(editProfileActivity, ProfileActivity.class);
             Toast.makeText(this.editProfileActivity, "Edit was successful", Toast.LENGTH_LONG).show();
+            intent.putExtra("user", user);
             view.getContext().startActivity(nextActivity);
         } else{
             Intent nextActivity = new Intent(editProfileActivity, MainActivity.class);

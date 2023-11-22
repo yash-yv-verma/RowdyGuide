@@ -39,6 +39,7 @@ public class ProfileController implements View.OnClickListener {
         } else if (id == R.id.editButton ){
             Intent intent = new Intent(profileActivity, EditProfileActivity.class);
             intent.putExtra("saveChanges", true); //indicates we want to edit profile
+            intent.putExtra("user", profileActivity.getIntent().getSerializableExtra("user"));
             v.getContext().startActivity(intent);
         }
 

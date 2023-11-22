@@ -4,6 +4,7 @@ import edu.utsa.cs3443.rowdyguidefinal.NewAccountActivity;
 import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
 import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
 import edu.utsa.cs3443.rowdyguidefinal.R;
+import edu.utsa.cs3443.rowdyguidefinal.model.User;
 
 import android.content.Intent;
 import android.view.View;
@@ -31,7 +32,7 @@ public class MainController implements View.OnClickListener {
         this.mainActivity = mainActivity;
     }
 
-    private boolean validate(String username, String password ) throws IOException {
+    private User validate(String username, String password) throws IOException {
         String filename = "userLoginInformation.csv";
         File readFrom = new File(mainActivity.getApplicationContext().getFilesDir(), filename);
         try {
@@ -40,18 +41,19 @@ public class MainController implements View.OnClickListener {
             FileInputStream stream = new FileInputStream(readFrom);
             stream.read(content);
 
-            ArrayList<String> userInfo = new ArrayList<>(Arrays.asList(new String(content).split("\n")));
+            ArrayList<String> userInfo= new ArrayList<>(Arrays.asList(new String(content).split("\n")));
 
-            for (String user : userInfo) {
-                String[] userTokens = user.split(",");
+            for (String userLine : userInfo) {
+                String[] userTokens = userLine.split(",");
                 if (userTokens[0].equals(username) & userTokens[1].equals(password)) {
-                    return true;
+                    User user = new User( username, password, userTokens[2], userTokens[3], userTokens[4], userTokens[5]);
+                    return user;
                 }
             }
-            return false;
+            return new User();
         } catch (FileNotFoundException e){
             readFrom.createNewFile();
-            return false;
+            return new User();
         }
     }
 
@@ -70,12 +72,14 @@ public class MainController implements View.OnClickListener {
             return;
         }
 
+
         try {
-            if ( validate(username,password) ) {
+            User user = validate(username,password);
+            if ( !user.getUsername().equals("") ) {
                 Intent intent = new Intent(mainActivity, ProfileActivity.class);
                 usernameEditText.setText("");
                 passwordEditText.setText("");
-                intent.putExtra("username", username);
+                intent.putExtra("user", user);
                 v.getContext().startActivity(intent);
             } else {
                 String toastText = "Invalid username or password.";

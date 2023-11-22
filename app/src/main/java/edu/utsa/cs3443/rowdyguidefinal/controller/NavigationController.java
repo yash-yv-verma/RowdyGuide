@@ -48,6 +48,7 @@ public class NavigationController<T extends AppCompatActivity> implements Bottom
 
         if (targetActivityClass != null) {
             Intent intent = new Intent( currentActivity, targetActivityClass );
+            intent.putExtra("user", currentActivity.getIntent().getSerializableExtra("user"));
             currentActivity.startActivity(intent);
             currentActivity.overridePendingTransition(0,0);
             return true;
