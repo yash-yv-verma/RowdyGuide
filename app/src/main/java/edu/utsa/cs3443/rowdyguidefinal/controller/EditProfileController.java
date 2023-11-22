@@ -52,10 +52,10 @@ public class EditProfileController implements View.OnClickListener {
                 String[] fields = line.split(",");
 
                 if (fields.length > 0 && fields[0].equals(username)) {
-                    if ( !name.equals("null")){ fields[2] = name; }     // Change name
-                    if ( !name.equals("null")){ fields[3] = classification; } // Change classification
-                    if ( !name.equals("null")){ fields[4] = email; }     // Change email
-                    if ( !name.equals("null")){ fields[5] = contact; } // Change contact
+                    if ( !name.trim().equals("")){ fields[2] = name; }     // Change name
+                    if ( !classification.trim().equals("")){ fields[3] = classification; } // Change classification
+                    if ( !email.trim().equals("")){ fields[4] = email; }     // Change email
+                    if ( !contact.trim().equals("")){ fields[5] = contact; } // Change contact
                 }
 
                 // Reconstruct the modified line
@@ -105,68 +105,59 @@ public class EditProfileController implements View.OnClickListener {
 
         User user = (User) editProfileActivity.getIntent().getSerializableExtra("user");
         char editMode = getMode(view);
-        String name = getText(R.id.Name, view);
-        String classification = getText(R.id.Classification, view);
-        String email = getText(R.id.Email, view);
-        String contact = getText(R.id.Contact, view);
+        String name = getText(R.id.editName, view);
+        String classification = getText(R.id.editClassification, view);
+        String email = getText(R.id.editEmail, view);
+        String contact = getText(R.id.editContact, view);
 
         //all fields are required for creating an account
         if ( editMode == 'c') {
-            if (!validateEntry(R.id.Name, view)) {
+            if (!validateEntry(R.id.editName, view)) {
                 Toast.makeText(this.editProfileActivity, "Name required", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (!validateEntry(R.id.Classification, view)) {
+            if (!validateEntry(R.id.editClassification, view)) {
                 Toast.makeText(this.editProfileActivity, "Classification required", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (!validateEntry(R.id.Email, view)) {
+            if (!validateEntry(R.id.editEmail, view)) {
                 Toast.makeText(this.editProfileActivity, "Email required", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (!validateEntry(R.id.Contact, view)) {
+            if (!validateEntry(R.id.editContact, view)) {
                 Toast.makeText(this.editProfileActivity, "Phone number required", Toast.LENGTH_LONG).show();
                 return;
             }
         } else { //change user fields if just editing account
-            if (name.trim().equals("")) {
-                name = "null";
-            } else {
+            if ( !name.trim().equals("")) {
                 user.setName(name);
             }
 
-            if (classification.trim().equals("")) {
-                classification = "null";
-            } else {
+            if ( !classification.trim().equals("")) {
                 user.setClassification(classification);
             }
 
-            if (email.trim().equals("")) {
-                email = "null";
-            } else {
+            if ( !email.trim().equals("")) {
                 user.setEmail(email);
             }
 
-            if (contact.trim().equals("")) {
-                contact = "null";
-            } else {
+            if ( !contact.trim().equals("")) {
                 user.setContact(contact);
             }
         }
 
 
-        Intent intent = editProfileActivity.getIntent();
-        String username = intent.getStringExtra("username");
-        editProfileInformation(username, name, classification, email, contact);
+
+        editProfileInformation(user.getUsername(), name, classification, email, contact);
 
         if ( editMode == 'e') {
             Intent nextActivity = new Intent(editProfileActivity, ProfileActivity.class);
             Toast.makeText(this.editProfileActivity, "Edit was successful", Toast.LENGTH_LONG).show();
-            intent.putExtra("user", user);
+            nextActivity.putExtra("user", user);
             view.getContext().startActivity(nextActivity);
         } else{
             Intent nextActivity = new Intent(editProfileActivity, MainActivity.class);
-            intent.putExtra("newAccountCreated", true);
+            nextActivity.putExtra("newAccountCreated", true);
             view.getContext().startActivity(nextActivity);
         }
 

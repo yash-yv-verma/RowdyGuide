@@ -33,7 +33,7 @@
 
 
         <EditText
-            android:id="@+id/Name"
+            android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -50,7 +50,7 @@
 
 
         <EditText
-            android:id="@+id/Classification"
+            android:id="@+id/editClassification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Classification"
@@ -67,7 +67,7 @@
             android:textSize="24dp"/>
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -85,7 +85,7 @@
 
 
         <EditText
-            android:id="@+id/Contact"
+            android:id="@+id/editContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
