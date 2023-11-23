@@ -39,6 +39,7 @@ public class CalendarActivity extends AppCompatActivity {
         listOfEvents.add(cal.makeCalendarEvent("Science Test","22-11-2023","8am"));
         listOfEvents.add(cal.makeCalendarEvent("Game night","22-11-2023","7pm"));
         listOfEvents.add(cal.makeCalendarEvent("Baseball Game","30-11-2023","2pm"));
+        listOfEvents.add(cal.makeCalendarEvent("Fall Music Festival","12-11-2023","4pm"));
 
         cal.addListOfEventsToList(listOfEvents);
         cal.setEventList(listOfEvents);

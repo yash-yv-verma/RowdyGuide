@@ -50,8 +50,9 @@ public class EventTabActivity extends AppCompatActivity implements RecyclerViewI
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
 
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.navigation_events);
         NavigationController<EventTabActivity> navigationController = new NavigationController<>(this);
