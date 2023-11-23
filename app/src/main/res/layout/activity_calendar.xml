@@ -27,14 +27,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="0dp"
-                android:padding="20dp"
+                android:padding="15dp"
                 android:layout_marginBottom="20dp"
                 android:background="@color/light_blue"
                 android:fontFamily="@font/syncopate_bold"
                 android:text="Calendar"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <CalendarView

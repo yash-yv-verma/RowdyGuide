@@ -3,6 +3,7 @@ package edu.utsa.cs3443.rowdyguidefinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -22,7 +23,7 @@ public class EventTabActivity2 extends AppCompatActivity {
         String description = getIntent().getStringExtra("DESCRIPTION");
         String price = getIntent().getStringExtra("PRICE");
 
-        TextView eName = findViewById(R.id.name);
+        Button eName = findViewById(R.id.name);
         TextView eDate = findViewById(R.id.date);
         TextView eDescription = findViewById(R.id.description);
         TextView ePrice = findViewById(R.id.price);
