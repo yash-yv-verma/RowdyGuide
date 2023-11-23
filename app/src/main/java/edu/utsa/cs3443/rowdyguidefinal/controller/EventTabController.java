@@ -64,27 +64,7 @@ public class EventTabController implements View.OnClickListener{
     }
 
     public void onClick(View v){
-        int idOfButtonPressed = v.getId();
-        Context context = v.getContext();
 
-        if (idOfButtonPressed == R.id.imageButton1) {
-
-            Toast.makeText(v.getContext(), "Home!", Toast.LENGTH_SHORT).show();
-
-            //Intent intent = new Intent(eventTabActivity, EventTabActivity.class);
-            //eventTabActivity.startActivity(intent);
-
-        } else if (idOfButtonPressed == R.id.imageButton2) {
-
-            Toast.makeText(v.getContext(), "Add!", Toast.LENGTH_SHORT).show();
-
-            //Intent intent = new Intent(eventTabActivity, EventTabActivity.class);
-            //eventTabActivity.startActivity(intent);
-
-        } else {
-            // User clicked an unknown button.
-            Toast.makeText(v.getContext(), "Something strange happened!", Toast.LENGTH_LONG).show();
-        }
     }
 
 }

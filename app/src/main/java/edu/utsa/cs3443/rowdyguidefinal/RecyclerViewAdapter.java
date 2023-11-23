@@ -19,12 +19,15 @@ import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+
+    private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<Event> events;
 
-    public RecyclerViewAdapter(Context context, ArrayList<Event> events) {
+    public RecyclerViewAdapter(Context context, ArrayList<Event> events, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.events = events;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -35,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
 
 
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -62,18 +65,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView imgView1;
         TextView tvDate, tvEventName, tvEventLocation;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             imgView1 = itemView.findViewById(R.id.imageView);
-
             tvDate = itemView.findViewById(R.id.textViewDate);
-
             tvEventName = itemView.findViewById(R.id.textViewEventName);
+            tvEventLocation = itemView.findViewById(R.id.textViewEventLocation);
             tvEventName.setMaxLines(1);
             tvEventName.setEllipsize(TextUtils.TruncateAt.END);
 
-            tvEventLocation = itemView.findViewById(R.id.textViewEventLocation);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (recyclerViewInterface != null){
+                        int pos = getAdapterPosition();
+                        if(pos != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
 
 
 

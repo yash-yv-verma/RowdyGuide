@@ -6,59 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="@drawable/bbd9"
+    android:background="#0C2340"
     tools:context=".EventTabActivity">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayoutH"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="10dp"
-        tools:ignore="MissingConstraints">
-
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="#00FFFFFF"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/img1" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/syncopate_bold"
-            android:fontFeatureSettings="@string/fab_transformation_scrim_behavior"
-            android:gravity="center"
-            android:text="Events"
-            android:textAlignment="center"
-            android:textColor="#FFFEFE"
-            android:textFontWeight="@integer/material_motion_duration_medium_1"
-            android:textSize="35sp"
-            android:typeface="normal" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:background="#00FFFFFF"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/img2" />
-
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:fontFamily="@font/syncopate_bold"
+        android:fontFeatureSettings="@string/fab_transformation_scrim_behavior"
+        android:gravity="center"
+        android:text="Events"
+        android:textAlignment="center"
+        android:textColor="#F15A22"
+        android:textFontWeight="@integer/material_motion_duration_medium_1"
+        android:textSize="35sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/mRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
