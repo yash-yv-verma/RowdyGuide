@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -45,7 +44,6 @@ public class EventTabActivity2 extends AppCompatActivity {
             }
         });
 
-
         String name = getIntent().getStringExtra("NAME");
         String date = getIntent().getStringExtra("DATE");
         String time = getIntent().getStringExtra("TIME");
@@ -70,6 +68,8 @@ public class EventTabActivity2 extends AppCompatActivity {
         eType.setText("Event Type: " + type);
         eLocation.setText(location);
 
+        //eName.setMaxLines(3);
+        //eName.setEllipsize(TextUtils.TruncateAt.END);
 
     }
 }

@@ -1,21 +1,14 @@
 package edu.utsa.cs3443.rowdyguidefinal.controller;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.content.res.AssetManager;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.utsa.cs3443.rowdyguidefinal.CalendarActivity;
 import edu.utsa.cs3443.rowdyguidefinal.EventTabActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MainActivity;
-import edu.utsa.cs3443.rowdyguidefinal.MapActivity;
-import edu.utsa.cs3443.rowdyguidefinal.ProfileActivity;
-import edu.utsa.cs3443.rowdyguidefinal.R;
 import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 import edu.utsa.cs3443.rowdyguidefinal.model.EventAdd;
 

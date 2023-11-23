@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="300dp"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/syncopate_bold"

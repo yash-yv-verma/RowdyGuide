@@ -10,14 +10,12 @@ import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 import edu.utsa.cs3443.rowdyguidefinal.controller.EventTabController;
-import edu.utsa.cs3443.rowdyguidefinal.model.Event;
 
 public class EventTabActivity extends AppCompatActivity implements RecyclerViewInterface{
 
