@@ -4,34 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C2340"
+    android:background="#ffffff"
     tools:context=".EventTabActivity2">
+
+
+    <TextView
+        android:id="@+id/calendarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="0dp"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@color/light_blue"
+        android:fontFamily="@font/syncopate_bold"
+        android:text="Events"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/syncopate_bold"
         android:text="EVENT Name"
-        android:textColor="#F15A22"
+        android:textColor="@color/dark_blue"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="32dp" />
-
 
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/syncopate"
         android:text="Location"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/name"
         tools:layout_editor_absoluteX="32dp" />
-
 
     <TextView
         android:id="@+id/type"
@@ -40,7 +61,7 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/syncopate"
         android:text="Type"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/location"
         tools:layout_editor_absoluteX="32dp" />
@@ -54,7 +75,7 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/syncopate"
         android:text="Price"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/type"
         tools:layout_editor_absoluteX="32dp" />
@@ -67,7 +88,7 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/syncopate"
         android:text="09 Aug @ "
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/price"
         tools:layout_editor_absoluteX="32dp" />
@@ -79,7 +100,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/syncopate"
         android:text="2:50AM"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/date"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +115,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/syncopate"
         android:text="Description"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/light_blue"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time"
