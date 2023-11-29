@@ -3,6 +3,7 @@ package edu.utsa.cs3443.rowdyguidefinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -32,6 +33,13 @@ public class EventTabActivity2 extends AppCompatActivity {
             navigationController.onNavigationItemSelected(item); //call here
             return true;
         });
+        String name = getIntent().getStringExtra("NAME");
+        String date = getIntent().getStringExtra("DATE");
+        String time = getIntent().getStringExtra("TIME");
+        String location = getIntent().getStringExtra("LOCATION");
+        String type = getIntent().getStringExtra("TYPE");
+        String description = getIntent().getStringExtra("DESCRIPTION");
+        String price = getIntent().getStringExtra("PRICE");
 
         ImageButton button = findViewById(R.id.imageButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -41,16 +49,15 @@ public class EventTabActivity2 extends AppCompatActivity {
                 animation.setDuration(200);
                 animation.setInterpolator(new OvershootInterpolator());
                 v.startAnimation(animation);
+                Intent intent = new Intent(EventTabActivity2.this, CalendarActivity.class);
+                intent.putExtra("NAME", name);
+                intent.putExtra("DATE", date);
+                intent.putExtra("TIME", time);
+                startActivity(intent);
             }
         });
 
-        String name = getIntent().getStringExtra("NAME");
-        String date = getIntent().getStringExtra("DATE");
-        String time = getIntent().getStringExtra("TIME");
-        String location = getIntent().getStringExtra("LOCATION");
-        String type = getIntent().getStringExtra("TYPE");
-        String description = getIntent().getStringExtra("DESCRIPTION");
-        String price = getIntent().getStringExtra("PRICE");
+
 
         TextView eName = findViewById(R.id.name);
         TextView eDate = findViewById(R.id.date);
