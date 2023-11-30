@@ -3,15 +3,15 @@ Team Name: KingKong
 
 Team Members:
 
-Paolo Lay
+Paolo Lay - Profile Page
 
-Kailey Perrino
+Kailey Perrino - Calendar Page
 
-Meira Sullum
+Meira Sullum - Map Page
 
-Yash Verma
+Yash Verma - Events Page
 
-Anju Soman
+Anju Soman - Login Page & Profile Page
 
 # Description
 
