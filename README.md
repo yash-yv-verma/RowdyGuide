@@ -8,8 +8,7 @@
 --------------------------------------------
 Team Name: KingKong                        |
 -------------------------------------------|
-Team Members:                              |
-                                           |
+Team Members:                              |                                        |
 1. Paolo Lay - Profile Page                |
                                            |
 2. Kailey Perrino - Calendar Page          |
