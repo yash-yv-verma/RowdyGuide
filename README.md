@@ -8,7 +8,9 @@
 --------------------------------------------
 Team Name: KingKong                        |
 -------------------------------------------|
-Team Members:                              |                                        |
+                                           |
+Team Members:                              |    
+                                           |
 1. Paolo Lay - Profile Page                |
                                            |
 2. Kailey Perrino - Calendar Page          |
@@ -18,6 +20,7 @@ Team Members:                              |                                    
 4. Yash Verma - Events Page                |
                                            |
 5. Anju Soman - Login Page & Profile Page  |
+                                           |
 --------------------------------------------
 
 # Description:
