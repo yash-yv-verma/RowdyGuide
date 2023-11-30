@@ -1,6 +1,8 @@
 # RowdyGuide
 Team Name: KingKong
+
 Team Members:
+
 Paolo Lay
 
 Kailey Perrino
