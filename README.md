@@ -1,10 +1,14 @@
 # RowdyGuide
 Team Name: KingKong
 Team Members:
-Paolo Lay \n
+Paolo Lay
+
 Kailey Perrino
+
 Meira Sullum
+
 Yash Verma
+
 Anju Soman
 
 # Description
