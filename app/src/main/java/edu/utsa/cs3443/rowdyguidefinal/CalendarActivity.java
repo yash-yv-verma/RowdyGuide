@@ -5,8 +5,8 @@
  * This class extends AppCompatActivity and includes functionality for handling date selection,
  * displaying events, and navigating through the bottom navigation menu.
  *
+ * @author Kailey Perrino
  *
- * @author KingKong
  */
 package edu.utsa.cs3443.rowdyguidefinal;
 

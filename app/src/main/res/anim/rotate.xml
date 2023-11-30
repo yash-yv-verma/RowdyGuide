@@ -1,4 +1,5 @@
 <!-- res/anim/rotate.xml -->
+<!-- Author: Yash Verma -->
 <rotate
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:interpolator="@android:anim/linear_interpolator"

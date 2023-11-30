@@ -1,3 +1,6 @@
+/**
+ * @author Kailey Perrino
+ */
 package edu.utsa.cs3443.rowdyguidefinal.model;
 
 import java.util.ArrayList;

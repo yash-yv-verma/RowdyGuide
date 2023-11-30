@@ -1,3 +1,6 @@
+/**
+ * @author Meira Sullum
+ */
 package edu.utsa.cs3443.rowdyguidefinal;
 
 import androidx.appcompat.app.AppCompatActivity;

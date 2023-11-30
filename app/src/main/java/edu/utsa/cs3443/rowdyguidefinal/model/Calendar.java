@@ -4,7 +4,7 @@
  * and manipulating event data.
  *
  *
- * @author KingKong
+ * @author Kailey Perrino
  */
 package edu.utsa.cs3443.rowdyguidefinal.model;
 

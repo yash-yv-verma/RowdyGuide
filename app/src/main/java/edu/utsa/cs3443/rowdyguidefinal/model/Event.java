@@ -1,11 +1,5 @@
 /**
- * The Event class represents a calendar event in the Rowdy Guide application.
- *
- * This class implements Serializable to allow objects of this class to be
- * converted into a byte stream for various purposes, such as saving and restoring state.
- *
- *
- * @author KingKong
+ * @author Yash Verma
  */
 package edu.utsa.cs3443.rowdyguidefinal.model;
 

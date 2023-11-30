@@ -1,3 +1,6 @@
+/**
+ * @author Anju Soman
+ */
 package edu.utsa.cs3443.rowdyguidefinal.model;
 
 import java.io.Serializable;
