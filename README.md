@@ -5,7 +5,7 @@
   This Android application, developed in Java using Android Studio, is designed to assist new students in finding 
   their classes and keeping track of events at the University of Texas at San Antonio (UTSA).
 
-[Link Text](https://www.youtube.com/watch?v=OelEEXhYvOI)
+[App demo](https://www.youtube.com/watch?v=OelEEXhYvOI)
 
 
 --------------------------------------------
